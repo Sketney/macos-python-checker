@@ -16,7 +16,7 @@ jobs:
           pip install py2app
       - name: Build .app
         run: |
-          py2applet --make-setup ваш_скрипт.py
+          py2applet --make-setup check_sites.py
           python setup.py py2app
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
