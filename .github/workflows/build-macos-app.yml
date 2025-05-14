@@ -4,22 +4,27 @@ on: [push]
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-latest  # macOS runner
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v4  # Updated from v2 to v4
+
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4  # Updated from v2 to v4
         with:
-          python-version: '3.9'
+          python-version: '3.11'  # Choose your Python version
+
       - name: Install dependencies
         run: |
           pip install py2app
-      - name: Build .app
+
+      - name: Build .app bundle
         run: |
           py2applet --make-setup check_sites.py
           python setup.py py2app
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+
+      - name: Upload .app as artifact
+        uses: actions/upload-artifact@v4  # Updated from v2 to v4
         with:
           name: YourApp
-          path: dist/check_sites.app
+          path: dist/check_sites.app  # Path to the generated .app
