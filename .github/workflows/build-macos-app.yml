@@ -24,7 +24,8 @@ jobs:
       run: python3 setup.py py2app
 
     - name: Upload app
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v2
       with:
         name: check_sites_app
         path: dist/check_sites.app
+
